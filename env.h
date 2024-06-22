@@ -1,4 +1,6 @@
-#define PIN_STACKS 5
+#define PIN_STACKS 3
 #define CUT_COUNTS 5
-#define CUT_DEPTH 1.2;
-#define SERVO_DISTANCE 1.5;
+#define CUT_DEPTH 1.2
+#define SERVO_DISTANCE 1.5
+#define SPEED 60
+#define DXL_PROTOCOL_VERSION 2.0
