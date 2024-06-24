@@ -21,7 +21,7 @@ The Source Code is in the repo
 
 ## ⚡ Electronics
 
-Components
+### Components
 
 - Servo Motors - [Dynamixel xl330-m288-t](https://emanual.robotis.com/docs/en/dxl/x/xl330-m288/) 
 - Driver Board - [openrb-150](https://emanual.robotis.com/docs/en/parts/controller/openrb-150/)
