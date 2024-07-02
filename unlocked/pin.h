@@ -13,18 +13,26 @@ public:
   int DXL_ID;
   int depth;
   float current_pos = 0;
+  float offsetAngle = 0;
 
-  Pin(int ardPinIn) {
-    DXL_ID = ardPinIn;
+  Pin(int ID, float offset) {
+    DXL_ID = ID;
     depth = 0;
+    offsetAngle = offset;
   }
+
+  Pin(int ID) {
+    Pin(ID, 0);
+  }
+
 
   void init() {
     setupMotors();
+    resetDepth();
   }
 
   void setupMotors() {
-    dxl.begin(1000000);
+    dxl.begin(115200);
     dxl.setPortProtocolVersion(DXL_PROTOCOL_VERSION);
     dxl.ping(DXL_ID);  // Get DYNAMIXEL information
 
@@ -52,23 +60,19 @@ public:
     moveServo();
   }
 
-  void moveServo() {
-    int pos = calcServoPos();
-
-    dxl.setGoalPosition(DXL_ID, pos, UNIT_DEGREE);
-    delay(800);
+  void goToAngle(float angle) {
+    dxl.setGoalPosition(DXL_ID, angle, UNIT_DEGREE);
+    delay(600);
     current_pos = dxl.getPresentPosition(DXL_ID, UNIT_DEGREE);
   }
 
-  int calcServoPos() {
-    int min = 100;
-    int max = 200;
-    // TODO math with dist from servo
+  void moveServo() {
+    float pos = baseAngles[depth] + offsetAngle;
 
-    return map(depth, 0, CUT_COUNTS, min, max);
+    goToAngle(pos);
   }
 
-  int printMotorPos() {
+  float printMotorPos() {
     current_pos = dxl.getPresentPosition(DXL_ID, UNIT_DEGREE);
     return current_pos;
   }

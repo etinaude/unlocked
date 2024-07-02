@@ -1,54 +1,69 @@
 #include "pin.h"
 
 bool isLocked = true;
-Pin pins[PIN_STACKS] = { Pin(1), Pin(2), Pin(3) };
-// Pin pins[0] = { };
-
-// Servo testServo;
-
+Pin pins[PIN_STACKS] = { Pin(1, 0) ,Pin(2, 135), Pin(3, 0), Pin(4, 0), Pin(5, 0) };
 
 void setup() {
-  // testServo.attach(3);
-
-
-  Serial.begin(9600);
+  Serial.begin(115200);
   for (int i = 0; i < PIN_STACKS; i++) {
     pins[i].init();
   }
   Serial.println("Ready");
+  Serial.println("~~~~~~~~~~~~");
 }
 
 void loop() {
   serialDebug();
+  // bruteForce();
+  // wearIn();
+  // resetAll();
+}
 
-  // testServo.write(0);
-  // Serial.println("0");
-  // delay(1000);
-
-  // testServo.write(90);
-  // Serial.println("90");
+void swingTest() {
+  pins[0].goToAngle(0);
+  Serial.println("0");
   delay(1000);
 
+  pins[0].goToAngle(90);
+  Serial.println("90");
+  delay(1000);
 }
 
 
-void serialDebug(){
-  
-  if(!Serial.available()) return;
+void serialDebug() {
+  if (!Serial.available()) return;
 
-  int pos = Serial.readString().toInt();
+  String input = Serial.readString();
+  int pin = input.substring(0, 1).toInt();
+  int depth = input.substring(2).toInt();
 
-  pins[0].setDepth(pos);
-  pins[1].setDepth(pos);
-  pins[2].setDepth(pos);
+  Serial.print("Pin - ");
+  Serial.println(pin);
+  Serial.print("Depth - ");
+  Serial.println(depth);
+
+  pins[pin].setDepth(depth);
 
   printState();
+  delay(1000);
+}
 
+void wearIn(){
+  for (int i = PIN_STACKS - 1; i >= 0; i--) {
+    pins[i].setDepth(5); 
+    pins[i].resetDepth();
+  }
+}
+
+void resetAll(){
+  for (int i = PIN_STACKS - 1; i >= 0; i--) {
+    pins[i].resetDepth();
+  }
 }
 
 
-void bruteForce(){
- // Increment the least significant digit
+void bruteForce() {
+  // Increment the least significant digit
   pins[PIN_STACKS - 1].incDepth();
 
   // Handle carry-over between digits
@@ -56,23 +71,28 @@ void bruteForce(){
     if (pins[i].depth == CUT_COUNTS) {
       pins[i].resetDepth();
       if (i > 0) {
-        pins[i - 1].incDepth(); // Carry-over to the next digit
+        pins[i - 1].incDepth();  // Carry-over to the next digit
       }
     } else {
-      break; // No more carry-over needed
+      break;  // No more carry-over needed
     }
   }
-
+ 
   printState();
 }
 
 
 void printState() {
+  Serial.println("State");
+
   for (int i = 0; i < PIN_STACKS; i++) {
+    Serial.print(i);
+    Serial.print(":");
     Serial.print(pins[i].printMotorPos());
     Serial.print(" ");
   }
   Serial.println();
+  Serial.println("~~~~~~~~~~~~");
 }
 
 
