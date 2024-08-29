@@ -13,9 +13,9 @@ void setup() {
 }
 
 void loop() {
-  serialDebug();
+  // serialDebug();
   // bruteForce();
-  // wearIn();
+  wearIn();
   // resetAll();
 }
 
