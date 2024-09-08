@@ -50,9 +50,7 @@ The Source Code is in the repo, fully open source, if you make any changes (plea
 
 ## ⚙️ Mechanics
 
-TODO: add CAD files
-
-Unlocked uses FDM, SLA and DMLS parts for different levels of precision and strength, it uses 0.8mm copper wire to press the pins, and 
+Unlocked uses FDM, SLA and DMLS parts for different levels of precision and strength, it uses 0.4mm copper wire to press the pins. More details in the `/3D files` Folder
 
 ### Tools Required
 
@@ -75,7 +73,7 @@ A new key blank will be needed for a different kind of lock based on the number 
 ## 📄 References
 
 - [Original 1991 Mechanical Patent -  US patent 5,172,578](https://www.researchgate.net/figure/S-A-Bitzioss-1991-design-for-a-Sputnik-decoder-pick-for-pin-tumbler-locks-US_fig9_271020041)
-- [A good design also based off the 1991 patent](https://www.youtube.com/watch?v=QE9MT1LG-PU)
+- [A good YouTube video of a design also based on the 1991 patent](https://www.youtube.com/watch?v=QE9MT1LG-PU)
 - [Physical lock decoder](https://www.youtube.com/watch?v=CLcOZhq2GjQ)
 
 
