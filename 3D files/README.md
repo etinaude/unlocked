@@ -1,18 +1,22 @@
-# Unlocked Mechanical
+# 🔑 Unlocked 🔑 Mechanical
 
 ## Files
 
-All the files needed are here
+Everything was designed in Fusion 360
+
+All the files needed are here. The STEP was too big to upload to Git Hub without being zipped and the f3z is massive so if you use Fusion360 and want that DM me. Otherwise, you can use the STEP, 3MF or STLs
 
 ### Print Settings
 
-FDM - Doesn't matter too much, these parts have loose tolerances, 0.12mm layer height is recommended
-DLP - As small a layer height as possible, as little support as possible, it should be designed to not need much support
-DMLS - Either printed vertically or horizontally, as fine detail as possible.
+FDM - Doesn't matter too much, these parts have loose tolerances, 0.12mm layer height is recommended \
+DLP - As small a layer height as possible, as little support as possible, it should be designed to not need much support \
+DMLS - Either printed vertically or horizontally, as fine detail as possible. 
 
 ## BOM
 
-All costs in GBP as of Sept 2024
+All costs in GBP as of Sept 2024 \
+The total cost is about £200
+
 
 ### Electronics
 
@@ -37,7 +41,7 @@ Always have lots of spare wire and screws
 ### 3D Printed Parts
 
 FDM for bigger parts
-DLP (resin) parts are used for low friction and high precision
+DLP (resin) parts are used for low-friction and high-precision
 DMLS (Metal powder bed) for strong parts (JLCPCB can print this for you)
 
 | Part              | Material | Count | Notes                      |
